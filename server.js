@@ -1,7 +1,9 @@
-import express from 'express';
+import express, { Router } from 'express';
 import dotenv from 'dotenv'
 import userRouter from './src/routers/userRouter.js';
 import mongoose from 'mongoose'
+import customerRouter from './src/routers/customerRouter.js';
+
 
 dotenv.config();
 const app = express();
@@ -12,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.use(express.json())
 app.use('/api/user', userRouter)
-
+app.use('/api/customer', customerRouter)
 
 const PORT = process.env.PORT || 8000;
 const URI = process.env.MONGO_URI
